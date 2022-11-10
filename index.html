@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="fr" x-data="{menuIsOpen: false}">
+<html lang="fr" x-data="{menuIsOpen: false, loremIsOpen: false, velitIsOpen: false, eliIsOpen: false}" :class="{noscroll:menuIsOpen}" >
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test menu</title>
+    <title>Teste menu</title>
     <script defer src="https://unpkg.com/alpinejs"></script>
+    <style>
+      .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vw;
+        background: #fff;
+        display: grid;
+        place-content: center;
+      }
+      .header__menuBtn {
+        position: relative;
+        z-index: 10;
+      }
+      .noscroll,
+      .noscroll body {
+        overflow:hidden;
+      }
+    </style>
   </head>
   <body>
     <!-- https://emmet.io/ -->
@@ -31,6 +51,7 @@
       </nav>
     </header>
     <!-- h2>lorem2^p>lorem -->
+    
     <h2>Lorem, ipsum.</h2>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat
@@ -38,5 +59,19 @@
       nemo aliquid pariatur vive les zebres quam voluptates animi laudantium, aperiam
       consectetur nobis enim.
     </p>
+
+    <dl>
+      <dt @click="loremIsOpen = ! loremIsOpen">Lorem.</dt>
+      <dd x-show="loremIsOpen">Lorem ipsum dolor sit amet.</dd>
+    </dl>
+    <dl>
+      <dt @click="velitIsOpen = ! velitIsOpen">Velit.</dt>
+      <dd x-show="velitIsOpen">Fugit dolorum autem possimus cupiditate?</dd>
+    </dl>
+    <dl>
+      <dt @click="eliIsOpen = ! eliIsOpen">Eligendi.</dt>
+      <dd x-show="eliIsOpen">Dolorum saepe labore fuga similique?</dd>
+    </dl>
+
   </body>
 </html>
